@@ -1,0 +1,18 @@
+<!-- views/queryForm.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query Form</title>
+</head>
+<body>
+  <form action="/executeQuery" method="post">
+
+    <label for="query">Enter Query:</label>
+    <input type="text" id="query" name="query" required>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

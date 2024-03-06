@@ -1,0 +1,52 @@
+<!-- views/results.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query Results</title>
+</head>
+<body>
+  <h1>Query Results</h1>
+
+  <center>
+    <% if (page == 1) { %>
+      <button type="button" disabled><<</button>
+      <button type="button" disabled><</button>
+      <button type="button"><a href="?page=<%= page + 1 %>">></a></button>
+      <button type="button"><a href="?page=<%= totalPages %>">>></a></button>
+  <% } else if (page == totalPages) { %>
+      <button type="button"><a href="?page=1"><<</a></button>
+      <button type="button"><a href="?page=<%= page - 1 %>"><</a></button>
+      <button type="button" disabled>></button>
+      <button type="button" disabled>>></button>
+  <% } else { %>
+      <button type="button"><a href="?page=1"><<</a></button>
+      <button type="button"><a href="?page=<%= page - 1 %>"><</a></button>
+      <button type="button"><a href="?page=<%= page + 1 %>">></a></button>
+      <button type="button"><a href="?page=<%= totalPages %>">>></a></button>
+  <% } %>
+  
+  </center>
+ 
+  <table>
+    <thead>
+      <tr>
+        <% for (const field in data[0]) { %>
+          <th><%= field %></th>
+        <% } %>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(row => { %>
+        <tr>
+          <% for (const field in row) { %>
+            <td><%= row[field] %></td>
+          <% } %>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
